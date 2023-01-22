@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 
 from  matplotlib.backends.backend_qt5agg  import  ( NavigationToolbar2QT  as  NavigationToolbar ) 
+from matplotlib import style
 import numpy as np
 # Define log
 import logging as log 
@@ -28,8 +29,8 @@ class application(Ui_MainWindow):
 
         #process
         self.pushButton_reset.clicked.connect(self.initState)
-        self.pushButton1.clicked.connect(self.clickMe)
-        self.pushButton2.clicked.connect(self.clickMe)
+        self.pushButton1.clicked.connect(self.showName1)
+        self.pushButton2.clicked.connect(self.showName2)
         self.hslider1.valueChanged.connect(self.s1label)
         self.hslider2.valueChanged.connect(self.s2label)
         self.hslider3.valueChanged.connect(self.s3label)
@@ -54,13 +55,13 @@ class application(Ui_MainWindow):
         self.draw()
 
     def clickMe(self):
-        print("hellow dunia")
+        print("Saludos cordiales")
 
     def showName1(self):
-        self.label1.setText("indra agustian")
+        self.label1.setText("Model: ABB IRB 1600")
 
     def showName2(self):
-        self.label1.setText("apa kabar??")
+        self.label1.setText("Dqreator")
 
     def s1label(self):
         self.labels1.setText("Joint 1: "+str(self.hslider1.value())+u'\N{DEGREE SIGN}')
@@ -94,9 +95,10 @@ class application(Ui_MainWindow):
         j5=self.hslider5.value()
         j6=self.hslider6.value()
 
-        j= dh_parse(j1,j2,j3,j4,j5,j6)
+        j = dh_parse(j1, j2, j3, j4, j5, j6)
         m = kinematics(j)
-        Q = xyz_pos(m)
+        
+        Q, U, V, W = xyz_pos(m)
         
         X0, Y0, Z0 = Q[0, 0:3], Q[1, 0:3], Q[2, 0:3]
         X1, Y1, Z1 = Q[0, 1:4], Q[1, 1:4], Q[2, 1:4]
@@ -107,25 +109,32 @@ class application(Ui_MainWindow):
         X6, Y6, Z6 = Q[0, 6:6], Q[1, 6:6], Q[2, 6:6]
 
         self.MplWidget.canvas.axes.clear() 
-        self.MplWidget.canvas.axes.plot (X1,Y1,Z1, color='green', marker='o', linestyle='solid', linewidth=5, markersize=10)
-        self.MplWidget.canvas.axes.plot (X2,Y2,Z2, color='red', marker='o', linestyle='solid', linewidth=5, markersize=10)
-        self.MplWidget.canvas.axes.plot (X3,Y3,Z3, color='blue', marker='o', linestyle='solid', linewidth=5, markersize=10)
-        self.MplWidget.canvas.axes.plot (X4,Y4,Z4, color='goldenrod', marker='o', linestyle='solid', linewidth=5, markersize=10)
-        self.MplWidget.canvas.axes.plot (X5,Y5,Z5, color='blue', marker='o', linestyle='solid', linewidth=5, markersize=10)
-        self.MplWidget.canvas.axes.plot (X6,Y6,Z6, color='goldenrod', marker='o', linestyle='solid', linewidth=5, markersize=10)
-        x5=X5[0]
-        y5=Y5[0]
-        z5=Z5[0]
-        self.MplWidget.canvas.axes.text(x5, y5, z5,'({:.2f}, {:.2f}, {:.2f})'.format(x5,y5,z5), weight='bold', fontsize=12)
+        width = 4 
+        size = 9
+        self.MplWidget.canvas.axes.plot (U[0,:], U[1,:], U[2,:], linewidth=width)
+        self.MplWidget.canvas.axes.plot (V[0,:], V[1,:], V[2,:], linewidth=width)
+        self.MplWidget.canvas.axes.plot (W[0,:], W[1,:], W[2,:], linewidth=width)
+        self.MplWidget.canvas.axes.plot (X0,Y0,Z0, color='green', marker='o', linestyle='solid', linewidth=width, markersize=size)
+        self.MplWidget.canvas.axes.plot (X1,Y1,Z1, color='green', marker='o', linestyle='solid', linewidth=width, markersize=size)
+        self.MplWidget.canvas.axes.plot (X2,Y2,Z2, color='red', marker='o', linestyle='solid', linewidth=width, markersize=size)
+        self.MplWidget.canvas.axes.plot (X3,Y3,Z3, color='blue', marker='o', linestyle='solid', linewidth=width, markersize=size)
+        self.MplWidget.canvas.axes.plot (X4,Y4,Z4, color='goldenrod', marker='o', linestyle='solid', linewidth=width, markersize=size)
+        self.MplWidget.canvas.axes.plot (X5,Y5,Z5, color='blue', marker='o', linestyle='solid', linewidth=width, markersize=size)
+        self.MplWidget.canvas.axes.plot (X6,Y6,Z6, color='goldenrod', marker='o', linestyle='solid', linewidth=width, markersize=size)
+        
+        x5 = X5[0]
+        y5 = Y5[0]
+        z5 = Z5[0]
+
+        self.MplWidget.canvas.axes.text(x5, y5, z5,'({:.2f}, {:.2f}, {:.2f})'.format(x5,y5,z5), weight='bold', fontsize=9)
         
         self.MplWidget.canvas.axes.set_xlabel('x')
         self.MplWidget.canvas.axes.set_ylabel('y')
         self.MplWidget.canvas.axes.set_zlabel('z')
         
-        self.MplWidget.canvas.axes.set_xlim([-3, 3])
-        self.MplWidget.canvas.axes.set_ylim([-3, 3])
+        self.MplWidget.canvas.axes.set_xlim([-2, 2])
+        self.MplWidget.canvas.axes.set_ylim([-2, 2])
         self.MplWidget.canvas.axes.set_zlim([0, 2])
-        
         self.MplWidget.canvas.draw() 
 
 

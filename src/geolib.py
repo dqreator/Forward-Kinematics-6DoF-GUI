@@ -87,48 +87,56 @@ def trax(x):
     return tx
 
 
+# def xyz_pos(m):
+#     Q1 = np.array([0, m[0, 0], m[0, 3], m[0, 7], m[0, 11], m[0, 15], m[0, 19], m[0, 23]])
+#     Q2 = np.array([0, m[1, 0], m[1, 3], m[1, 7], m[1, 11], m[1, 15], m[1, 19], m[1, 23]])
+#     Q3 = np.array([0, m[2, 0], m[2, 3], m[2, 7], m[2, 11], m[2, 15], m[2, 19], m[2, 23]])
+#     Q = np.vstack((Q1, Q2, Q3))
+
+#     return  Q
+
 def xyz_pos(m):
-    Q1 = np.array([0, m[0, 0], m[0, 3], m[0, 7], m[0, 11], m[0, 15], m[0, 19], m[0, 23]])
-    Q2 = np.array([0, m[1, 0], m[1, 3], m[1, 7], m[1, 11], m[1, 15], m[1, 19], m[1, 23]])
-    Q3 = np.array([0, m[2, 0], m[2, 3], m[2, 7], m[2, 11], m[2, 15], m[2, 19], m[2, 23]])
-    Q = np.vstack((Q1, Q2, Q3))
 
-    return  Q
+    Q1 = np.array([0, 0, m[0, 3], m[0, 7], m[0, 11], m[0, 15], m[0, 19], m[0, 23] ])
+    Q2 = np.array([0, 0, m[1, 3], m[1, 7], m[1, 11], m[1, 15], m[1, 19], m[1, 23]])
+    Q3 = np.array([0, m[2, 3], m[2, 3], m[2, 7], m[2, 11], m[2, 15], m[2, 19], m[2, 23]])
+    
+    P = np.vstack((Q1, Q2, Q3))
 
-def draw_robot(Q):
+    Ux = np.array([m[0, 23], m[0, 23]+m[0, 20]*.4])
+    Uy = np.array([m[1, 23], m[1, 23]+m[1, 20]*.4])
+    Uz = np.array([m[2, 23], m[2, 23]+m[2, 20]*.4])
+
+    Vx = np.array([m[0, 23], m[0, 23]+m[0, 21]*.4])
+    Vy = np.array([m[1, 23], m[1, 23]+m[1, 21]*.4])
+    Vz = np.array([m[2, 23], m[2, 23]+m[2, 21]*.4])
+
+    Wx = np.array([m[0, 23], m[0, 23]+m[0, 22]*.4])
+    Wy = np.array([m[1, 23], m[1, 23]+m[1, 22]*.4])
+    Wz = np.array([m[2, 23], m[2, 23]+m[2, 22]*.4])
+
+    U = np.vstack((Ux, Uy, Uz))
+    V = np.vstack((Vx, Vy, Vz))
+    W = np.vstack((Wx, Wy, Wz))
+
+    return  P, U, V, W
+
+def draw_robot(Q,U,V,W):
     X, Y, Z = Q[0, :], Q[1, :], Q[2, :]
-    fig = plt.figure(num=None, figsize=(14, 20), dpi=80, facecolor='w', edgecolor='k')
-    plt.rcParams["figure.figsize"] = [30, 30]
-    ax = fig.add_subplot(111, projection='3d')
-    ax.plot(X, Y, Z, marker='o')
-    ax.plot(X, Y, Z, 'go--', linewidth=2, markersize=12)
-    ax.plot(X, Y, Z, color='green', marker='o', linestyle='dashed', linewidth=2, markersize=12)
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
-    ax.set_zlabel('Z')
-    ax.set_xlim([-10, 10])
-    ax.set_ylim([-10, 10])
-    ax.set_zlim([0, 3])
-    ax.set_title('Forward Kinematics')
-    ax.view_init(30, 120)
-    plt.show()
-    return X, Y, Z
+    X0,Y0,Z0= Q[0,0:3],Q[1,0:3],Q[2,0:3]
+    X1,Y1,Z1= Q[0,1:4],Q[1,1:4],Q[2,1:4]
+    X2,Y2,Z2= Q[0,2:4],Q[1,2:4],Q[2,2:4]
+    X3,Y3,Z3= Q[0,3:5],Q[1,3:5],Q[2,3:5]
+    X4,Y4,Z4= Q[0,4:6],Q[1,4:6],Q[2,4:6]
+    X5,Y5,Z5= Q[0,5:6],Q[1,5:6],Q[2,5:6]
+    X6,Y6,Z6= Q[0,6:6],Q[1,6:6],Q[2,6:6]
 
-def draw_robot2(Q):
-    X0,Y0,Z0=Q[0,0:3],Q[1,0:3],Q[2,0:3]
-    X1,Y1,Z1=Q[0,1:4],Q[1,1:4],Q[2,1:4]
-    X2,Y2,Z2=Q[0,2:4],Q[1,2:4],Q[2,2:4]
-    X3,Y3,Z3=Q[0,3:5],Q[1,3:5],Q[2,3:5]
-    X4,Y4,Z4=Q[0,4:6],Q[1,4:6],Q[2,4:6]
-    X5,Y5,Z5=Q[0,5:6],Q[1,5:6],Q[2,5:6]
-    X6,Y6,Z6=Q[0,6:6],Q[1,6:6],Q[2,6:6]
-
-    fig = plt.figure(num=None, figsize=(14, 20), dpi=80, facecolor='w', edgecolor='k')
-    #plt.rcParams["figure.figsize"] = [30, 30]
+    fig = plt.figure(num=None, figsize=(14, 20), dpi=80, edgecolor='k')
     ax = fig.add_subplot(111, projection='3d')
     
-    #ax.plot(X, Y, Z, marker='o')
-    #ax.plot(X,Y,Z, 'go--', linewidth=2, markersize=12)
+    ax.plot(U[0, : ], U[1,: ], U[2, : ], linewidth=5)
+    ax.plot(V[0, : ], V[1,: ], V[2, : ], linewidth=5)
+    ax.plot(W[0, : ], W[1,: ], W[2, : ], linewidth=5)
     ax.plot(X0,Y0,Z0, color='red', marker='o', linestyle='solid', linewidth=5, markersize=10)
     ax.plot(X1,Y1,Z1, color='green', marker='o', linestyle='solid', linewidth=5, markersize=10)
     ax.plot(X2,Y2,Z2, color='red', marker='o', linestyle='solid', linewidth=5, markersize=10)
@@ -146,3 +154,4 @@ def draw_robot2(Q):
     ax.view_init(20, -120)
     plt.show()
     return X1,Y1,Z1,X2,Y2,Z2,X2,Y2,Z2
+

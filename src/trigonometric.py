@@ -7,3 +7,6 @@ def sind(x):
 
 def cosd(x):
     return np.cos(x * np.pi / 180)
+
+def asind(x,y):
+    return np.arcsin(x/y)*180/np.pi
