@@ -2,82 +2,27 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1121</width>
-    <height>708</height>
+    <width>1151</width>
+    <height>725</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowOpacity">
+   <double>0.900000000000000</double>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="autoFillBackground">
     <bool>true</bool>
    </property>
-   <widget class="QPushButton" name="pushButton1">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>620</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>MS Sans Serif</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>but1</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton2">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>620</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>MS Sans Serif</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>but2</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label1">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>600</y>
-      <width>291</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>MS Sans Serif</family>
-      <pointsize>15</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>By David Quezada</string>
-    </property>
-   </widget>
    <widget class="QSlider" name="hslider1">
     <property name="geometry">
      <rect>
@@ -164,6 +109,9 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgba(255,255,255,210)</string>
+    </property>
     <property name="text">
      <string>Joint 1:</string>
     </property>
@@ -184,6 +132,9 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgba(255,255,255,210)</string>
     </property>
     <property name="text">
      <string>Joint 2 :</string>
@@ -206,48 +157,38 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgba(255,255,255,210)</string>
+    </property>
     <property name="text">
      <string>Joint 3 :</string>
-    </property>
-   </widget>
-   <widget class="MplWidget" name="MplWidget" native="true">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>120</y>
-      <width>581</width>
-      <height>491</height>
-     </rect>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="tabletTracking">
-     <bool>true</bool>
-    </property>
-    <property name="autoFillBackground">
-     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_reset">
     <property name="geometry">
      <rect>
-      <x>800</x>
+      <x>780</x>
       <y>500</y>
-      <width>221</width>
-      <height>23</height>
+      <width>241</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>MS Sans Serif</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#pushButton_reset{
+background-color: rgb(244, 252, 255);
+border-radius:10px;}
+
+QPushButton#pushButton_reset:pressed{
+background-color: rgb(217, 217, 217);
+border-radius:10px;}</string>
     </property>
     <property name="text">
      <string>Reset</string>
@@ -291,6 +232,9 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgba(255,255,255,210)</string>
     </property>
     <property name="text">
      <string>Joint 4 :</string>
@@ -357,6 +301,9 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgba(255,255,255,210)</string>
+    </property>
     <property name="text">
      <string>Joint 6 :</string>
     </property>
@@ -378,16 +325,119 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgba(255,255,255,210)</string>
+    </property>
     <property name="text">
      <string>Joint 5 :</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="background" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1131</width>
+      <height>700</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/images/background.jpg);
+border-radius: 24px;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label1">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>650</y>
+      <width>291</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Sans Serif</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgba(255,255,255,210)</string>
+    </property>
+    <property name="text">
+     <string>By David Quezada</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton1">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>640</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Sans Serif</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#pushButton1{
+background-color: rgb(244, 252, 255);
+border-radius:5px;}
+
+QPushButton#pushButton1:pressed{
+background-color: rgb(217, 217, 217);
+border-radius:5px;}</string>
+    </property>
+    <property name="text">
+     <string>FRONT</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton2">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>640</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Sans Serif</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#pushButton2{
+background-color: rgb(244, 252, 255);
+border-radius:5px;}
+
+
+QPushButton#pushButton2:pressed{
+background-color: rgb(217, 217, 217);
+border-radius:5px;}</string>
+    </property>
+    <property name="text">
+     <string>TOP</string>
     </property>
    </widget>
    <widget class="QLabel" name="label1_2">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>280</x>
       <y>40</y>
-      <width>801</width>
+      <width>661</width>
       <height>41</height>
      </rect>
     </property>
@@ -399,10 +449,61 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgba(255,255,255,210)</string>
+    </property>
     <property name="text">
      <string>FORWARD KINEMATICS 6DoF GUI</string>
     </property>
    </widget>
+   <widget class="MplWidget" name="MplWidget" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>120</y>
+      <width>500</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="tabletTracking">
+     <bool>true</bool>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 24px;
+background-color: rgba(255,255,255,0.5);</string>
+    </property>
+   </widget>
+   <zorder>background</zorder>
+   <zorder>hslider1</zorder>
+   <zorder>hslider2</zorder>
+   <zorder>hslider3</zorder>
+   <zorder>labels1</zorder>
+   <zorder>labels2</zorder>
+   <zorder>labels3</zorder>
+   <zorder>pushButton_reset</zorder>
+   <zorder>hslider4</zorder>
+   <zorder>labels4</zorder>
+   <zorder>hslider5</zorder>
+   <zorder>hslider6</zorder>
+   <zorder>labels6</zorder>
+   <zorder>labels5</zorder>
+   <zorder>label1</zorder>
+   <zorder>pushButton1</zorder>
+   <zorder>pushButton2</zorder>
+   <zorder>label1_2</zorder>
+   <zorder>MplWidget</zorder>
   </widget>
  </widget>
  <customwidgets>
@@ -413,6 +514,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

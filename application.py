@@ -29,8 +29,8 @@ class application(Ui_MainWindow):
 
         #process
         self.pushButton_reset.clicked.connect(self.initState)
-        self.pushButton1.clicked.connect(self.showName1)
-        self.pushButton2.clicked.connect(self.showName2)
+        self.pushButton1.clicked.connect(self.front_view)
+        self.pushButton2.clicked.connect(self.top_view)
         self.hslider1.valueChanged.connect(self.s1label)
         self.hslider2.valueChanged.connect(self.s2label)
         self.hslider3.valueChanged.connect(self.s3label)
@@ -57,11 +57,14 @@ class application(Ui_MainWindow):
     def clickMe(self):
         print("Saludos cordiales")
 
-    def showName1(self):
-        self.label1.setText("Model: ABB IRB 1600")
+    def top_view(self):
+        self.MplWidget.canvas.axes.view_init(90, -90)
+        self.draw()
+        print("Saludos cordiales")
 
-    def showName2(self):
-        self.label1.setText("Dqreator")
+    def front_view(self):
+        self.MplWidget.canvas.axes.view_init(0, -90)
+        self.draw()
 
     def s1label(self):
         self.labels1.setText("Joint 1: "+str(self.hslider1.value())+u'\N{DEGREE SIGN}')

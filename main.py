@@ -56,3 +56,7 @@ if __name__ == '__main__':
 
 # Saludos Cordiales!
 # Github: @dqreator
+#pyrcc5 res.qrc > res.py
+#pyuic5 fkgui_qt.ui > fkgui_qt.py
+# MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+# MainWindow.setAttribute(QtCore.Qt.WA_TranslucentBackground)
