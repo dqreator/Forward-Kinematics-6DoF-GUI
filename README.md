@@ -1,5 +1,5 @@
 # Forward-Kinematics-6DoF-GUI
-GUI to show control of a 6DoF manipulator using forward kinematics.
+GUI to show the control of a 6DoF manipulator using The Denavit-Hartenberg(DH) convention to solve the forward kinematics of the robot.
 
  >Details  
  - The user is able to move the joins of a 6DoF robot manipulator and see in realtime the plot of the structure of the robot and the position of the end-effector. Aditionally, it has a button of reset values and it is possible to change between views.
