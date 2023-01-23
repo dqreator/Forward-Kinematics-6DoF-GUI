@@ -1,6 +1,9 @@
 # Forward-Kinematics-6DoF-GUI
 GUI to show the control of a 6DoF manipulator using The Denavit-Hartenberg(DH) convention to solve the forward kinematics of the robot.
 
+For the presented project is considered a robot with the following configuration:
+[![Main Menu](gui/RRR_arm.png)]
+
  >Details  
  - The user is able to move the joins of a 6DoF robot manipulator and see in realtime the plot of the structure of the robot and the position of the end-effector. Aditionally, it has a button of reset values and it is possible to change between views.
 
@@ -20,3 +23,6 @@ The graphical User interface was designed with the tool QT Designer and Pyqt5.
 
 ## Screenshot
 [![Main Menu](gui/Screenshot.png)]
+
+## Inspired robot
+- ABB IRB 1600: [www](https://new.abb.com/products/robotics/robots/articulated-robots/irb-1600)
