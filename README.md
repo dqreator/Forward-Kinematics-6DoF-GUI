@@ -1,10 +1,8 @@
 # Forward-Kinematics-6DoF-GUI
 GUI to show control of a 6DoF manipulator using forward kinematics.
 
-
  >Details  
- - the user enters from the two possible options which manipulator would like to use.
- - the user could change the joint variables in a Graphical User Interface and see the changes in the position of the manipulator graphically.
+ - The user is able to move the joins of a 6DoF robot manipulator and see in realtime the plot of the structure of the robot and the position of the end-effector. Aditionally, it has a button of reset values and it is possible to change between views.
 
 
 ### Modules
@@ -13,3 +11,12 @@ GUI to show control of a 6DoF manipulator using forward kinematics.
  - Logging: [www](https://docs.python.org/3/howto/logging.html)
  - NumPy : [www](https://numpy.org/doc/stable/)
  - Matplotlib: [www](https://matplotlib.org/stable/index.html)
+ - Pyqt5: [www](https://pypi.org/project/pyqt5-tools/)
+
+## GUI
+The graphical User interface was designed with the tool QT Designer and Pyqt5.
+ - Qt Designer: [www](https://doc.qt.io/qt-6/qtdesigner-manual.html)
+
+
+## Screenshot
+[![Main Menu](gui/Screenshot.png)]
